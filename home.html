@@ -4,47 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Girilaya Wayang Golek - Home</title>
-    <!-- Menghubungkan ke file CSS yang sudah ada -->
-    <link rel="stylesheet" href="css/style.css">
+    
     <!-- Icon Library (Font Awesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- Variabel Warna & Gaya Global --- */
+        :root {
+            --bg-dark: #5c3613;
+            --bg-light: #4a382a;
+            --text-primary: #ffffff;
+            --text-secondary: #d1c7bd;
+            --accent-orange: #e69a45;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* --- Gaya Khusus Halaman Home --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('images/bgprofil.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* --- Navbar Utama --- */
+        .main-nav {
+            width: 100%;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .main-nav a {
+            color: var(--text-secondary);
+            padding: 10px 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            border-bottom: 3px solid transparent;
+        }
+        .main-nav a:hover {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-orange);
+        }
+        .main-nav a.active {
+            color: var(--text-primary);
+            font-weight: bold;
+            border-bottom-color: var(--accent-orange);
+        }
+        .main-nav .icon {
+            font-size: 1.5rem;
+            padding: 10px 0;
+        }
+        .main-nav .icon:hover {
+            border-bottom-color: transparent;
+        }
+
+        /* --- Kontainer Konten Utama --- */
+        .home-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            min-height: calc(100vh - 75px); /* Mengisi sisa tinggi layar */
+        }
+
+        /* Konten Teks di Sebelah Kiri */
+        .home-text-content {
+            flex: 1.2;
+        }
+        .home-text-content h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: bold;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+        .home-text-content h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+        .home-text-content p {
+            color: var(--text-secondary);
+            text-align: justify;
+            max-width: 500px;
+        }
+
+        /* Tumpukan Gambar di Sebelah Kanan */
+        .home-image-stack {
+            flex: 1;
+            display: grid;
+            place-items: center;
+            position: relative;
+            min-height: 400px;
+        }
+        .home-image-stack .background-circle {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+        .home-image-stack .foreground-logo {
+            position: absolute;
+            width: 100%;
+            max-width: 240px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .home-container {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 40px;
+            }
+            .home-text-content p {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        @media (max-width: 768px) {
+            .main-nav {
+                padding: 15px 20px;
+                gap: 15px;
+                justify-content: space-around;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="page-container">
-        <!-- Navbar yang konsisten dengan halaman lain -->
-        <nav class="main-nav">
-            <a href="index.html" class="icon" title="Halaman Utama"><i class="fas fa-home"></i></a>
-            <a href="home.html" class="active">Home</a>
-            <a href="product.html">Product</a>
-            <a href="contact.html">Contacts</a>
-        </nav>
-        
-        <!-- Konten Utama dengan Layout 2 Kolom -->
-        <main class="home-body">
-            <!-- Kolom Kiri: Teks Deskripsi -->
-            <div class="home-content">
-                <h1>Girilaya</h1>
-                <h2>wayang golek</h2>
-                <div class="text-description">
-                    <p>
-                        Wayang Golek adalah salah satu warisan budaya tak benda yang berasal dari tanah Sunda, Jawa Barat, yang telah ada sejak berabad-abad lalu. Seni pertunjukan ini menggunakan boneka kayu berbentuk tiga dimensi yang digerakkan oleh seorang dalang di atas panggung. Dalang tidak hanya menggerakkan wayang, tetapi juga menjadi narator cerita, menyuarakan berbagai tokoh, dan mengiringi pertunjukan dengan nyanyian serta iringan gamelan.
-                    </p>
-                    <p>
-                        Cerita yang dibawakan dalam pertunjukan Wayang Golek biasanya bersumber dari epos besar seperti Mahabharata dan Ramayana, serta kisah lokal yang disebut carangan, yang sering kali mengandung kritik sosial, pesan moral, bahkan nilai-nilai religius. Tokoh-tokohnya sangat beragam, mulai dari para ksatria seperti Arjuna dan Gatutkaca, hingga Punakawan seperti Cepot, Dawala, dan Semar yang berperan sebagai penyejuk suasana sekaligus penyampai pesan-pesan bijak.
-                    </p>
-                </div>
-                <!-- Tombol untuk ke halaman produk -->
-                <a href="product.html" class="order-button" style="display: inline-block; margin-top: 20px; background-color: var(--accent-orange); color: var(--bg-dark);">Lihat Koleksi</a>
-            </div>
 
-            <!-- Kolom Kanan: Logo -->
-            <div class="home-logo">
-                <img src="images/logo.png" alt="Girilaya Logo">
-            </div>
-        </main>
-        
-        <!-- Elemen Kurva Dekoratif -->
-        <div class="background-curve"></div>
-    </div>
+    <!-- Navbar Utama yang Konsisten -->
+    <nav class="main-nav">
+        <a href="index.html" class="icon" title="Halaman Utama"><i class="fas fa-home"></i></a>
+        <a href="home.html" class="active">Home</a>
+        <a href="product.html">Product</a>
+        <a href="contact.html">Contacts</a>
+    </nav>
+
+    <!-- Kontainer untuk konten utama -->
+    <main class="home-container">
+        <div class="home-text-content">
+            <h1>Girilaya</h1>
+            <h2>wayang golek</h2>
+            <p>
+                Girilaya Wayang Golek adalah galeri dan pusat kerajinan wayang golek di Bandung yang didirikan oleh Riki Kartawiyoga sejak 2008. Memproduksi berbagai jenis wayang golek—tradisional, modern, bahkan pesanan custom—untuk pasar lokal dan ekspor. Selain mempertahankan nilai budaya Sunda, galeri ini juga menerapkan inovasi desain agar produknya relevan dan menarik generasi masa kini.
+            </p>
+        </div>
+
+        <aside class="home-image-stack">
+            <!-- Gambar lingkaran di belakang -->
+            <img src="images/bulatprofil.png" alt="Decorative Circle" class="background-circle">
+            <!-- Logo di depan -->
+            <img src="images/logo.png" alt="Girilaya Logo" class="foreground-logo">
+        </aside>
+    </main>
+
 </body>
 </html>

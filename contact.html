@@ -4,39 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontak Kami - Girilaya</title>
-    <!-- Menghubungkan ke file CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    
     <!-- Icon Library (Font Awesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts untuk judul "Contact Us" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Variabel Warna & Gaya Global --- */
+        :root {
+            --bg-dark: #5c3613;
+            --text-primary: #ffffff;
+            --text-secondary: #d1c7bd;
+            --accent-orange: #e69a45;
+            --card-text: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Navbar Utama --- */
+        .main-nav {
+            width: 100%;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .main-nav a {
+            color: var(--text-secondary);
+            padding: 10px 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            border-bottom: 3px solid transparent;
+        }
+        .main-nav a:hover {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-orange);
+        }
+        .main-nav a.active {
+            color: var(--text-primary);
+            font-weight: bold;
+            border-bottom-color: var(--accent-orange);
+        }
+        .main-nav .icon {
+            font-size: 1.5rem;
+            padding: 10px 0;
+        }
+        .main-nav .icon:hover {
+            border-bottom-color: transparent;
+        }
+        /* --- Konten Halaman Kontak --- */
+        .contact-page-body {
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Konten mulai dari kiri */
+            min-height: calc(100vh - 75px); /* Tinggi dikurangi navbar */
+            background-image: url('images/kontak.jpg'); /* GANTI DENGAN NAMA GAMBAR LATAR ANDA */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .contact-box {
+            background-color: #5c3613;
+            backdrop-filter: blur(8px);
+            border-radius: 25px;
+            padding: 40px;
+            width: 100%;
+            max-width: 550px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        .contact-header p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .contact-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            color: var(--card-text);
+            border-radius: 30px;
+            padding: 12px 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+        }
+
+        .contact-item .icon-wrapper {
+            background-color: var(--bg-dark);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 1.1rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-item span {
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            body { padding: 0; }
+            .main-nav { padding: 15px 20px; gap: 15px; justify-content: space-around; }
+            .contact-page-body {
+                padding: 20px;
+                align-items: center; /* Pusatkan di layar kecil */
+            }
+            .contact-box { padding: 30px; }
+            .contact-header h1 { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
-    <div class="page-container">
-        <nav class="main-nav">
-            <a href="index.html" class="icon"><i class="fas fa-home"></i></a>
-            <a href="home.html">Home</a>
-            <a href="product.html">Product</a>
-            <a href="contact.html" class="active">Contacts</a>
-        </nav>
-        <div class="contact-hero" style="background-image: url('images/latar-kontak.jpg');">
-            <div class="contact-content">
-                <h1>Hubungi Kami</h1>
+    <!-- Navbar Utama yang Konsisten -->
+    <nav class="main-nav">
+        <a href="index.html" class="icon" title="Halaman Utama"><i class="fas fa-home"></i></a>
+        <a href="home.html">Home</a>
+        <a href="product.html">Product</a>
+        <a href="contact.html" class="active">Contacts</a>
+    </nav>
+
+    <!-- Konten Halaman Kontak -->
+    <main class="contact-page-body">
+        <div class="contact-box">
+            <div class="contact-header">
+                <h1>Contact Us</h1>
                 <p>Don't hesitate to ask everything about us!</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="icon"><i class="fas fa-phone"></i></div>
-                        <span>+62 899-9999-9999</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="icon"><i class="fas fa-envelope"></i></div>
-                        <span>GIRILAYAWAYANGGOLEK@GMAIL.COM</span>
-                    </div>
-                    <div class="contact-item">
-                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <span>KAB. BANDUNG, JAWA BARAT.</span>
-                    </div>
-                </div>
+            </div>
+            <div class="contact-info-list">
+                    <a href="https://wa.me/6285222777125" target="_blank" class="contact-item">
+                        <div class="icon-wrapper"><i class="fas fa-phone"></i></div>
+                        <span>0852-2277-7125</span>
+                    </a>
+                    <a href="mailto:ricky_kartawiyoga@yahoo.com" class="contact-item">
+                        <div class="icon-wrapper"><i class="fas fa-envelope"></i></div>
+                        <span>ricky_kartawiyoga@yahoo.com</span>
+                    </a>
+                    <a href="https://www.instagram.com/girilaya_wayang" target="_blank" class="contact-item">
+                        <div class="icon-wrapper"><i class="fab fa-instagram"></i></div>
+                        <span>girilaya_wayang</span>
+                    </a>
+                    <a href="https://maps.app.goo.gl/k5UvvaVCDwjKekrq6" target="_blank" class="contact-item">
+                        <div class="icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
+                        <span>Jl. Giriharja No.130, Jelekong, Kec. Baleendah, Kabupaten Bandung, Jawa Barat 40375</span>
+                    </a>                    
             </div>
         </div>
-    </div>
+    </main>
 </body>
 </html>

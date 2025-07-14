@@ -4,62 +4,345 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produk - Girilaya</title>
-    <!-- Menghubungkan ke file CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    
     <!-- Icon Library (Font Awesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- Variabel Warna & Gaya Global --- */
+        :root {
+            --bg-dark: #5c3613;
+            --bg-light: #4a382a;
+            --bg-sidebar: #2f241a;
+            --text-primary: #ffffff;
+            --text-secondary: #d1c7bd;
+            --accent-orange: #e69a45;
+            --card-bg: #ffffff;
+            --card-text: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark); /* Warna latar disamakan dengan container */
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Layout Utama Halaman Produk --- */
+        .page-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto; /* Menghapus margin atas/bawah */
+            overflow: hidden;
+            background-color: var(--bg-dark);
+            /* border-radius dan box-shadow dihapus untuk menghilangkan efek container */
+        }
+
+        /* --- Navbar Utama --- */
+        .main-nav {
+            width: 100%;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky; /* Membuat navbar menempel */
+            top: 0;           /* Menempel di bagian paling atas layar */
+            z-index: 1000;    /* Memastikan navbar selalu di atas konten lain */
+            /* --- AKHIR TAMBAHAN --- */
+
+        
+        }
+        .main-nav a {
+            color: var(--text-secondary);
+            padding: 10px 5px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            border-bottom: 3px solid transparent;
+        }
+        .main-nav a:hover {
+            color: var(--text-primary);
+            border-bottom-color: var(--accent-orange);
+        }
+        .main-nav a.active {
+            color: var(--text-primary);
+            font-weight: bold;
+            border-bottom-color: var(--accent-orange);
+        }
+        .main-nav .icon {
+            font-size: 1.5rem;
+            padding: 10px 0;
+        }
+        .main-nav .icon:hover {
+            border-bottom-color: transparent;
+        }
+
+        /* --- Header Dashboard (di bawah Navbar Utama) --- */
+        .product-dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .header-title .icon-box {
+            width: 40px;
+            height: 40px;
+            background-color: var(--card-bg);
+            color: var(--card-text);
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            font-size: 1.5rem;
+        }
+        .search-bar {
+            position: relative;
+            width: 50%;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border-radius: 25px;
+            border: 1px solid var(--bg-light);
+            background-color: var(--bg-light);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+        .search-bar .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+        .user-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 1.5rem;
+        }
+
+        /* Konten Produk (2 Kolom) */
+        .product-body {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 30px 40px;
+        }
+        .main-product-area {
+            display: flex;
+            flex-direction: column;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+        }
+        .product-card {
+            background-color: var(--card-bg);
+            color: var(--card-text);
+            border-radius: 20px;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .product-card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+        .product-card h3 {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        .add-button {
+            background-color: #333;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.8rem;
+            font-weight: 300;
+            cursor: pointer;
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            transition: background-color 0.3s;
+        }
+        .add-button:hover {
+            background-color: #555;
+        }
+
+        /* Sidebar Kanan */
+        .product-sidebar {
+            background-color: #4e2e10;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            border: 1px solid var(--bg-light);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .profile img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-orange);
+        }
+        .profile h4 {
+            font-size: 1.1rem;
+            margin-top: 5px;
+        }
+        .profile p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .recent-orders h3 {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .order-item img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .product-body {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .main-nav { padding: 15px 20px; gap: 15px; justify-content: space-around; }
+            .product-dashboard-header { flex-direction: column; gap: 20px; padding: 20px; }
+            .search-bar { width: 100%; }
+            .product-body { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
-    <div class="page-container">
-        <!-- Navbar Atas yang Konsisten -->
-        <nav class="main-nav">
+    <!-- Navbar Utama (Tidak Diganggu Gugat) -->
+    <nav class="main-nav">
             <a href="index.html" class="icon"><i class="fas fa-home"></i></a>
             <a href="home.html">Home</a>
             <a href="product.html" class="active">Product</a>
             <a href="contact.html">Contacts</a>
-        </nav>
+    </nav>
+    <div class="page-container">
+        <!-- Header Dashboard (di Bawah Navbar Utama) -->
+        <header class="product-dashboard-header">
+            <div class="header-title">
+                <div class="icon-box">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <span>Produk</span>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Cari...">
+            </div>
+            <div class="user-actions">
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-user-circle"></i>
+            </div>
+        </header>
 
         <!-- Konten Halaman dengan Layout 2 Kolom -->
         <div class="product-body">
             <!-- Kolom Kiri: Produk -->
             <main class="main-product-area">
-                <header class="product-header">
-                    <h1>Koleksi Wayang</h1>
-                    <div class="search-bar">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" placeholder="Cari...">
-                    </div>
-                </header>
                 <div class="product-grid">
                     <div class="product-card">
-                        <img src="images/wayang3.jpg" alt="Wayang Arjuna">
-                        <h3>Arjuna</h3>
-                        <p class="price">Rp 173.000</p>
-                        <a href="https://linktr.ee/username_anda" target="_blank" class="order-button">Pesan Sekarang</a>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/wayang1.jpg" alt="Wayang Cepot">
-                        <h3>Cepot</h3>
-                        <p class="price">Rp 165.000</p>
-                        <a href="https://linktr.ee/username_anda" target="_blank" class="order-button">Pesan Sekarang</a>
-                    </div>
-                    <div class="product-card">
-                        <img src="images/wayang5.jpg" alt="Wayang Gatotkaca">
-                        <h3>Gatotkaca</h3>
-                        <p class="price">Rp 179.000</p>
-                        <a href="https://linktr.ee/username_anda" target="_blank" class="order-button">Pesan Sekarang</a>
+                        <img src="images/cepot.jpg" alt="Wayang Golek Cepot">
+                        <h3>Wayang Golek<br>Cepot</h3>
+                        <button class="add-button">+</button>
                     </div>
                      <div class="product-card">
-                        <img src="images/wayang2.jpg" alt="Wayang Krisna">
-                        <h3>Krisna</h3>
-                        <p class="price">Rp 169.000</p>
-                        <a href="https://linktr.ee/username_anda" target="_blank" class="order-button">Pesan Sekarang</a>
+                        <img src="images/gatot.jpg" alt="Wayang Golek Rahwana">
+                        <h3>Wayang Golek<br>Ganda Manah</h3>
+                        <button class="add-button">+</button>
                     </div>
                     <div class="product-card">
-                        <img src="images/wayang4.jpg" alt="Wayang Semar">
-                        <h3>Semar</h3>
-                        <p class="price">Rp 160.000</p>
-                        <a href="https://linktr.ee/username_anda" target="_blank" class="order-button">Pesan Sekarang</a>
+                        <img src="images/rahwana.jpg" alt="Wayang Golek Ganda manah">
+                        <h3>Wayang Golek<br>Rahwana</h3>
+                        <button class="add-button">+</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/semar.jpg" alt="Wayang Golek Semar">
+                        <h3>Wayang Golek<br>Semar</h3>
+                        <button class="add-button">+</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/hanoman.jpg" alt="Wayang Golek Hanoman">
+                        <h3>Wayang Golek<br>Hanoman</h3>
+                        <button class="add-button">+</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/bima.jpg" alt="Wayang Custom Outfit">
+                        <h3>Wayang Golek<br>Bima</h3>
+                        <button class="add-button">+</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/arjuna.jpg" alt="Wayang Custom Outfit">
+                        <h3>Wayang Golek<br>Arjuna</h3>
+                        <button class="add-button">+</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/nakula.jpg" alt="Wayang Custom Outfit">
+                        <h3>Wayang Golek<br>Nakula</h3>
+                        <button class="add-button">+</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/petruk.jpg" alt="Wayang Custom Outfit">
+                        <h3>Wayang Golek<br>Petruk</h3>
+                        <button class="add-button">+</button>
+                    </div>
+                    <div class="product-card">
+                        <img src="images/gatot kaca.jpg" alt="Wayang Custom Outfit">
+                        <h3>Wayang Golek<br>Gatot Kaca</h3>
+                        <button class="add-button">+</button>
                     </div>
                 </div>
             </main>
@@ -67,21 +350,23 @@
             <!-- Kolom Kanan: Sidebar -->
             <aside class="product-sidebar">
                 <div class="profile">
-                    <img src="images/profil.jpg" alt="Foto Profil">
-                    <div>
-                        <h4>Riky</h4>
-                        <p>Bandung, Indonesia</p>
-                    </div>
+                    <img src="images/icons.png" alt="Foto Profil">
+                    <h4>Riky Kartawiyoga</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Bandung, Indonesia</p>
                 </div>
                 <div class="recent-orders">
                     <h3>Pesanan Terkini <i class="fas fa-chevron-down"></i></h3>
                     <div class="order-item">
-                        <img src="images/wayang-cepot.jpg" alt="Cepot">
-                        <div><p>Cepot</p><small>1 Pcs</small></div>
+                        <img src="images/cepot.jpg" alt="Cepot">
+                        <div><p>Wayang Golek Cepot</p></div>
                     </div>
                     <div class="order-item">
-                        <img src="images/wayang-arjuna.jpg" alt="Arjuna">
-                        <div><p>Arjuna</p><small>1 Pcs</small></div>
+                        <img src="images/hanoman.jpg" alt="Hanoman">
+                        <div><p>Wayang Golek Hanoman</p></div>
+                    </div>
+                     <div class="order-item">
+                        <img src="images/petruk.jpg" alt="Custom">
+                        <div><p>Wayang Golek Petruk</p></div>
                     </div>
                 </div>
             </aside>
