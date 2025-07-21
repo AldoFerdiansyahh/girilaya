@@ -31,6 +31,14 @@
       line-height: 1.6;
     }
 
+    .main-footer {
+            background-color: var(--bg-footer);
+            text-align: center;
+            padding: 25px 40px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
     a {
       text-decoration: none;
       color: inherit;
@@ -48,7 +56,6 @@
       padding: 15px 40px;
       display: flex;
       align-items: center;
-      /* DIUBAH: Kembali ke rata kiri */
       justify-content: flex-start; 
       gap: 30px;
       background-color: rgba(0, 0, 0, 0.2);
@@ -77,7 +84,6 @@
     .main-nav .icon {
       font-size: 1.5rem;
       padding: 10px 0;
-      /* DIUBAH: Properti position dan left dihapus */
     }
 
     .product-dashboard-header {
@@ -246,8 +252,8 @@
 <body>
   <nav class="main-nav">
       <a href="index.html" class="icon" title="Halaman Utama"><i class="fas fa-home"></i></a>
-      <a href="home.html" class="active">Profil</a>
-      <a href="product.html">Galeri</a>
+      <a href="home.html">Profil</a>
+      <a href="product.html" class="active">Galeri</a>
       <a href="contact.html">Kontak</a>
   </nav>
 
@@ -288,7 +294,8 @@ Cepot adalah tokoh panakawan Sunda yang terkenal dengan wajah lucu, hidung besar
             <div class="detail-button">Lihat Detail</div>
             <div class="wayang-info">
                 <h4>Arjuna (Ganda Manah)</h4>
-                <p>Kesatria Pandawa ketiga, dikenal sebagai pemanah ulung, tampan, dan berbudi luhur. Ganda Manah adalah salah satu senjatanya yang sakti.</p>
+                <p>Arjuna (Ganda Manah)
+                  Ganda Manah adalah nama lain dari Arjuna ketika ia menyamar sebagai seorang brahmana dalam sayembara memanah. Nama ini berarti 'penembak yang indah' dan merujuk pada keahliannya dalam memanah.</p>
             </div>
           </div>
 
@@ -298,7 +305,8 @@ Cepot adalah tokoh panakawan Sunda yang terkenal dengan wajah lucu, hidung besar
             <div class="detail-button">Lihat Detail</div>
             <div class="wayang-info">
                 <h4>Prabu Dasamuka (Rahwana)</h4>
-                <p>Raja Alengka yang menjadi tokoh antagonis utama dalam wiracarita Ramayana. Ia dikenal sakti mandraguna namun memiliki sifat angkara murka.</p>
+                <p>Prabu Dasamuka (Rahwana)
+                  Rahwana (atau Dasamuka) adalah raja Alengka dalam Ramayana. Ia digambarkan sebagai raksasa berkepala sepuluh yang menculik Dewi Sinta, istri Rama. Meski antagonis, Rahwana terkenal karena kesaktiannya dan kecintaan mendalam pada keluarganya.</p>
             </div>
           </div>
 
@@ -308,7 +316,8 @@ Cepot adalah tokoh panakawan Sunda yang terkenal dengan wajah lucu, hidung besar
             <div class="detail-button">Lihat Detail</div>
              <div class="wayang-info">
                 <h4>Ki Lurah Semar</h4>
-                <p>Tokoh panakawan paling utama, merupakan penjelmaan dewa. Ia adalah penasihat bijaksana para kesatria Pandawa dengan penampilan sederhana.</p>
+                <p>Ki Lurah Semar
+                  Semar adalah tokoh panakawan sekaligus dewa yang turun ke bumi sebagai rakyat biasa untuk mendampingi ksatria. Ia bijaksana, rendah hati, dan sering memberi petuah moral. Dalam filosofi Jawa, Semar melambangkan rakyat jelata sekaligus pengayom.</p>
             </div>
           </div>
 
@@ -318,7 +327,8 @@ Cepot adalah tokoh panakawan Sunda yang terkenal dengan wajah lucu, hidung besar
             <div class="detail-button">Lihat Detail</div>
              <div class="wayang-info">
                 <h4>Anoman (Hanoman)</h4>
-                <p>Ksatria wanara (kera) putih dari wiracarita Ramayana. Ia adalah panglima dan abdi setia Prabu Rama yang memiliki kekuatan luar biasa.</p>
+                <p>Anoman (Hanoman)
+                  Hanoman adalah kera putih sakti dalam Ramayana, putra Batara Bayu (dewa angin). Ia adalah panglima pasukan kera yang membantu Rama menyelamatkan Sinta dari Rahwana. Hanoman terkenal karena kesetiaannya, kekuatan super, dan kemampuan terbang.</p>
             </div>
           </div>
 
@@ -328,8 +338,54 @@ Cepot adalah tokoh panakawan Sunda yang terkenal dengan wajah lucu, hidung besar
             <div class="detail-button">Lihat Detail</div>
              <div class="wayang-info">
                 <h4>Bima (Werkudara)</h4>
-                <p>Pandawa kedua, dikenal karena kekuatan fisiknya yang luar biasa, wataknya yang tegas, jujur, dan tidak suka basa-basi. Senjatanya adalah Kuku Pancanaka.</p>
+                <p>Bima (Werkudara)
+                  Bima adalah Pandawa kedua dalam Mahabharata. Bertubuh besar dan berotot, ia memiliki kekuatan luar biasa. Bima dikenal jujur, polos, tegas terhadap ketidakadilan, dan menggunakan gada Rujakpala sebagai senjata pusaka.</p>
             </div>
+          </div>
+
+          <div class="product-card">
+            <img src="images/arjuna.jpg" alt="Wayang Golek Arjuna">
+            <h3>Wayang Golek<br>Arjuna</h3>
+            <div class="detail-button">Lihat Detail</div>
+             <div class="wayang-info">
+                <h4>Arjuna</h4>
+                <p>Arjuna
+                  Arjuna adalah Pandawa ketiga yang terkenal tampan, lembut, dan mahir memanah. Ia mendapat senjata pusaka Panah Pasopati dari Batara Guru. Arjuna dikenal sebagai ksatria strategis yang sering menjadi tokoh utama dalam berbagai lakon wayang.</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <img src="images/nakula.jpg" alt="Wayang Golek Nakula">
+            <h3>Wayang Golek<br>Nakula</h3>
+            <div class="detail-button">Lihat Detail</div>
+             <div class="wayang-info">
+                <h4>Nakula</h4>
+                <p>Nakula
+                  Nakula adalah Pandawa keempat, kembar dengan Sadewa. Ia digambarkan tampan, tenang, dan ahli dalam ilmu kedokteran serta memelihara kuda. Dalam wayang, Nakula jarang tampil dominan namun sangat setia pada saudara-saudaranya.</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <img src="images/petruk.jpg" alt="Wayang Golek Petruk">
+            <h3>Wayang Golek<br>Petruk</h3>
+            <div class="detail-button">Lihat Detail</div>
+             <div class="wayang-info">
+                <h4>Petruk</h4>
+                <p>Petruk
+                  Petruk adalah tokoh panakawan berwajah jenaka dengan tubuh tinggi kurus dan hidung panjang. Bersama Semar, Gareng, dan Bagong, Petruk melambangkan rakyat biasa yang cerdas dan suka menyampaikan kritik sosial dengan humor.</p>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <img src="images/gatot.jpg" alt="Wayang Golek Gatotkaca">
+            <h3>Wayang Golek<br>Gatot kaca</h3>
+            <div class="detail-button">Lihat Detail</div>
+             <div class="wayang-info">
+                <h4>GatotKaca</h4>
+                <p>Gatotkaca
+                  Gatotkaca adalah putra Bima dengan raksasi Arimbi. Ia digambarkan sebagai ksatria sakti mandraguna dengan tubuh yang kebal senjata dan mampu terbang di angkasa karena memakai baju pusaka otot kawat balung wesi. Gatotkaca terkenal dalam pertempuran Bharatayudha ketika bertarung melawan Adipati Karna. Dalam budaya Jawa, ia melambangkan keberanian dan pengorbanan.</p>
+            </div>
+          </div>
           </div>
         </div>
       </main>
@@ -386,5 +442,8 @@ Cepot adalah tokoh panakawan Sunda yang terkenal dengan wajah lucu, hidung besar
       });
     });
   </script>
+  <footer class="main-footer">
+        <p>&copy; 2025 Girilaya Wayang Golek - Bandung, Jawa Barat</p>
+    </footer>
 </body>
 </html>

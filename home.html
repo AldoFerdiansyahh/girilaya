@@ -40,43 +40,50 @@
             line-height: 1.6;
         }
 
+        .main-footer {
+            background-color: var(--bg-footer);
+            text-align: center;
+            padding: 25px 40px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         /* --- Navbar Utama --- */
         .main-nav {
-            width: 100%;
-            padding: 15px 40px;
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            background-color: rgba(0, 0, 0, 0.2);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .main-nav a {
-            color: var(--text-secondary);
-            padding: 10px 5px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            position: relative;
-            border-bottom: 3px solid transparent;
-        }
-        .main-nav a:hover {
-            color: var(--text-primary);
-            border-bottom-color: var(--accent-orange);
-        }
-        .main-nav a.active {
-            color: var(--text-primary);
-            font-weight: bold;
-            border-bottom-color: var(--accent-orange);
-        }
-        .main-nav .icon {
-            font-size: 1.5rem;
-            padding: 10px 0;
-        }
-        .main-nav .icon:hover {
-            border-bottom-color: transparent;
-        }
+      width: 100%;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; 
+      gap: 30px;
+      background-color: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .main-nav a {
+      color: var(--text-secondary);
+      padding: 10px 5px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      border-bottom: 3px solid transparent;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      color: var(--text-primary);
+      border-bottom-color: var(--accent-orange);
+      font-weight: bold;
+    }
+
+    .main-nav .icon {
+      font-size: 1.5rem;
+      padding: 10px 0;
+    }
+
 
         /* --- Kontainer Konten Utama --- */
         .profile-container {
@@ -166,6 +173,9 @@
         </div>
 
     </main>
+    <footer class="main-footer">
+        <p>&copy; 2025 Girilaya Wayang Golek - Bandung, Jawa Barat</p>
+    </footer>
 
 </body>
 </html>
