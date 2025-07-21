@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Girilaya Wayang Golek - Index</title>
     
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Icon & Font -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +14,8 @@
         /* --- Variabel Warna & Gaya Global --- */
         :root {
             --bg-dark: #503013;
+            --bg-medium: #422a11;
+            --bg-footer: #6e553b;
             --text-primary: #ffffff;
             --text-secondary: #d1c7bd;
             --accent-orange: #e69a45;
@@ -32,9 +32,6 @@
             background-color: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
-            background-size: cover;
-            background-position: center top; /* Tambahkan ini */
-            background-repeat: no-repeat;    /* Tambahkan ini */
         }
 
         a {
@@ -50,13 +47,11 @@
             align-items: center;
             gap: 30px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: absolute; /* Membuat navbar menempel di atas */
+            position: sticky;
             top: 0;
-            left: 0;
-            position: sticky; /* Membuat navbar menempel */
-            top: 0;           /* Menempel di bagian paling atas layar */
-            z-index: 1000;    /* Memastikan navbar selalu di atas konten lain */
-            /* --- AKHIR TAMBAHAN --- */
+            z-index: 1000;
+            background-color: rgba(80, 48, 19, 0.8);
+            backdrop-filter: blur(5px);
         }
         .main-nav a {
             color: var(--text-secondary);
@@ -66,26 +61,19 @@
             position: relative;
             border-bottom: 3px solid transparent;
         }
-        .main-nav a:hover {
-            color: var(--text-primary);
-            border-bottom-color: var(--accent-orange);
-        }
+        .main-nav a:hover,
         .main-nav a.active {
             color: var(--text-primary);
             font-weight: bold;
             border-bottom-color: var(--accent-orange);
         }
-        .main-nav .icon {
-            font-size: 1.5rem;
-            padding: 10px 0;
-        }
-        .main-nav .icon:hover {
-            border-bottom-color: transparent;
+        .main-nav a i {
+             margin-right: 8px;
         }
 
         /* --- Konten Hero (Gambar Besar) --- */
         .index-hero {
-            height: 100vh; /* Tinggi penuh layar */
+            height: 100vh;
             display: grid;
             place-items: center;
             text-align: center;
@@ -115,6 +103,43 @@
             text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5);
         }
 
+        /* --- BAGIAN VIDEO SECTION (SUDAH DIUBAH) --- */
+        .video-section {
+            background-size: cover;
+            background-position: center;
+            padding: 80px 40px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -80px;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #3a220d;
+            padding: 20px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 2;
+        }
+        
+        .video-container video {
+            width: 100%;
+            border-radius: 15px;
+            display: block;
+        }
+
+        /* --- BAGIAN FOOTER --- */
+        .main-footer {
+            background-color: var(--bg-footer);
+            text-align: center;
+            padding: 25px 40px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         /* --- Responsive Design --- */
         @media (max-width: 768px) {
             .main-nav {
@@ -122,23 +147,37 @@
                 gap: 15px;
                 justify-content: space-around;
             }
-            .index-hero {
+            .index-hero, .video-section {
                 padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navbar akan berada di atas konten -->
-    <nav class="main-nav">
-        <a href="index.html" class="icon" title="Halaman Utama"><i class="fas fa-home"></i></a>
-        <a href="home.html" class="active">Profil</a>
-        <a href="product.html">Galeri</a>
-        <a href="contact.html">Kontak</a>
-    </nav>
-    
-    <!-- Konten utama dengan gambar latar belakang -->
+  <nav class="main-nav">
+      <a href="index.html" class="icon" title="Halaman Utama"><i class="fas fa-home"></i></a>
+      <a href="home.html" class="active">Profil</a>
+      <a href="product.html">Galeri</a>
+      <a href="contact.html">Kontak</a>
+  </nav>
+
     <header class="index-hero" style="background-image: url('images/bg.png');">
-    </header>
+        </header>
+
+    <main>
+        <section class="video-section">
+            <div class="video-container">
+                <video controls poster="images/background.jpg">
+                    <source src="images/video1.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Girilaya Wayang Golek - Bandung, Jawa Barat</p>
+    </footer>
+
 </body>
 </html>

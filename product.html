@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Produk - Girilaya</title>
-  <link rel="stylesheet" href="css/style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
   <style>
@@ -43,12 +42,14 @@
       margin: 0 auto;
       overflow: hidden;
     }
-
+    
     .main-nav {
       width: 100%;
       padding: 15px 40px;
       display: flex;
       align-items: center;
+      /* DIUBAH: Kembali ke rata kiri */
+      justify-content: flex-start; 
       gap: 30px;
       background-color: rgba(0, 0, 0, 0.2);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -76,14 +77,18 @@
     .main-nav .icon {
       font-size: 1.5rem;
       padding: 10px 0;
+      /* DIUBAH: Properti position dan left dihapus */
     }
 
     .product-dashboard-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
+      padding: 20px 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 20px;
     }
 
     .header-title {
@@ -93,21 +98,10 @@
       font-size: 1.2rem;
       font-weight: bold;
     }
-
-    .header-title .icon-box {
-      width: 40px;
-      height: 40px;
-      background-color: var(--card-bg);
-      color: var(--card-text);
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      font-size: 1.5rem;
-    }
-
+    
     .search-bar {
       position: relative;
-      width: 50%;
+      width: 40%; 
     }
 
     .search-bar input {
@@ -127,24 +121,26 @@
       transform: translateY(-50%);
       color: var(--text-secondary);
     }
-
+    
     .user-actions {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        font-size: 1.5rem;
     }
-
+    
     .product-body {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding: 30px 40px;
     }
 
     .main-product-area {
       display: flex;
       flex-direction: column;
+      width: 100%;
+      max-width: 900px;
     }
 
     .product-grid {
@@ -156,7 +152,7 @@
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 25px;
     }
-
+    
     .product-card {
       background-color: var(--card-bg);
       color: var(--card-text);
@@ -165,6 +161,7 @@
       text-align: center;
       position: relative;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
     }
 
     .product-card img {
@@ -178,229 +175,216 @@
     .product-card h3 {
       font-size: 1rem;
       font-weight: normal;
+      margin-bottom: 35px;
     }
-
-    .add-button {
+    
+    .detail-button {
       background-color: #333;
       color: white;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      border: none;
-      font-size: 1.8rem;
-      cursor: pointer;
+      padding: 6px 16px;
+      border-radius: 15px;
+      font-size: 0.8rem;
       position: absolute;
       bottom: 15px;
-      right: 15px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .add-button:hover {
-      background-color: #555;
+    .wayang-info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        width: calc(100% + 20px);
+        padding: 15px;
+        background-color: var(--bg-sidebar);
+        color: var(--text-primary);
+        border: 2px solid var(--accent-orange);
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        z-index: 10;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        text-align: left;
     }
 
-    .product-sidebar {
-      background-color: #4e2e10;
-      padding: 20px;
-      border-radius: 20px;
+    .wayang-info h4 {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+        color: var(--accent-orange);
+        text-align: center;
+        font-weight: bold;
     }
 
-    .profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      padding: 20px;
-      border: 1px solid var(--bg-light);
-      border-radius: 20px;
-      margin-bottom: 30px;
-      text-align: center;
+    .wayang-info p {
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
 
-    .profile img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--accent-orange);
+    .wayang-info.is-active {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
     }
-
-    .profile h4 {
-      font-size: 1.1rem;
-      margin-top: 5px;
-    }
-
-    .profile p {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-
-    .recent-orders h3 {
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1.1rem;
-    }
-
-    .order-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .order-item img {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
+    
     @media (max-width: 992px) {
-      .product-body {
-        grid-template-columns: 1fr;
+      .main-product-area {
+        max-width: 100%;
       }
     }
 
     @media (max-width: 768px) {
-      .main-nav { padding: 15px 20px; gap: 15px; justify-content: space-around; }
+      .main-nav { padding: 15px 20px; justify-content: space-around; }
       .product-dashboard-header { flex-direction: column; gap: 20px; padding: 20px; }
       .search-bar { width: 100%; }
       .product-body { padding: 20px; }
+      .wayang-info { width: 90%; }
     }
   </style>
 </head>
 <body>
-  <!-- Navigasi -->
-    <nav class="main-nav">
-        <a href="index.html" class="icon" title="Halaman Utama"><i class="fas fa-home"></i></a>
-        <a href="home.html" class="active">Profil</a>
-        <a href="product.html">Galeri</a>
-        <a href="contact.html">Kontak</a>
-    </nav>
+  <nav class="main-nav">
+      <a href="index.html" class="icon" title="Halaman Utama"><i class="fas fa-home"></i></a>
+      <a href="home.html" class="active">Profil</a>
+      <a href="product.html">Galeri</a>
+      <a href="contact.html">Kontak</a>
+  </nav>
 
-  <!-- Kontainer Utama -->
   <div class="page-container">
-
-    <!-- Header Dashboard -->
-    <header class="product-dashboard-header">
-      <div class="header-title">
-        <div class="icon-box"><i class="fas fa-box-open"></i></div>
-        <span>Galeri</span>
-      </div>
-      <div class="search-bar">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" id="searchInput" placeholder="Cari...">
-      </div>
-      <div class="user-actions">
-        <i class="fas fa-bell"></i>
-        <i class="fas fa-user-circle"></i>
-      </div>
-    </header>
-
-    <!-- Isi Halaman -->
+    
     <div class="product-body">
 
-      <!-- Bagian Produk -->
+      <header class="product-dashboard-header">
+        <div class="header-title">
+          <span>Galeri Wayang</span>
+        </div>
+        <div class="search-bar">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Cari...">
+        </div>
+        <div class="user-actions">
+          <i class="fas fa-user-circle"><a href="index.html"></a></i>
+        </div>
+      </header>
+
       <main class="main-product-area">
         <div class="product-grid">
-          <!-- Produk Wayang -->
+          
           <div class="product-card">
             <img src="images/cepot.jpg" alt="Wayang Golek Cepot">
             <h3>Wayang Golek<br>Cepot</h3>
-            <a href="https://id.shp.ee/63xnzgV" target="_blank" class="add-button">+</a>
+            <div class="detail-button">Lihat Detail</div>
+            <div class="wayang-info">
+                <h4>Cepot (Astrajingga)</h4>
+                <p>Cepot (Astrajingga)
+Cepot adalah tokoh panakawan Sunda yang terkenal dengan wajah lucu, hidung besar, dan sikap humoris. Ia merupakan anak Semar yang cerdas, kritis, dan suka menghibur. Cepot tidak berasal dari Mahabharata atau Ramayana, melainkan diciptakan dalang Sunda untuk menyampaikan kritik sosial dengan cara jenaka.</p>
+            </div>
           </div>
+
           <div class="product-card">
             <img src="images/gatot.jpg" alt="Wayang Golek Ganda Manah">
             <h3>Wayang Golek<br>Ganda Manah</h3>
-            <a href="https://id.shp.ee/63xnzgV" target="_blank" class="add-button">+</a>
+            <div class="detail-button">Lihat Detail</div>
+            <div class="wayang-info">
+                <h4>Arjuna (Ganda Manah)</h4>
+                <p>Kesatria Pandawa ketiga, dikenal sebagai pemanah ulung, tampan, dan berbudi luhur. Ganda Manah adalah salah satu senjatanya yang sakti.</p>
+            </div>
           </div>
+
           <div class="product-card">
             <img src="images/rahwana.jpg" alt="Wayang Golek Rahwana">
             <h3>Wayang Golek<br>Rahwana</h3>
-            <a href="https://id.shp.ee/63xnzgV" target="_blank" class="add-button">+</a>
+            <div class="detail-button">Lihat Detail</div>
+            <div class="wayang-info">
+                <h4>Prabu Dasamuka (Rahwana)</h4>
+                <p>Raja Alengka yang menjadi tokoh antagonis utama dalam wiracarita Ramayana. Ia dikenal sakti mandraguna namun memiliki sifat angkara murka.</p>
+            </div>
           </div>
+
           <div class="product-card">
             <img src="images/semar.jpg" alt="Wayang Golek Semar">
             <h3>Wayang Golek<br>Semar</h3>
-            <a href="https://id.shp.ee/63xnzgV" target="_blank" class="add-button">+</a>
+            <div class="detail-button">Lihat Detail</div>
+             <div class="wayang-info">
+                <h4>Ki Lurah Semar</h4>
+                <p>Tokoh panakawan paling utama, merupakan penjelmaan dewa. Ia adalah penasihat bijaksana para kesatria Pandawa dengan penampilan sederhana.</p>
+            </div>
           </div>
+
           <div class="product-card">
             <img src="images/hanoman.jpg" alt="Wayang Golek Hanoman">
             <h3>Wayang Golek<br>Hanoman</h3>
-            <a href="https://id.shp.ee/63xnzgV" target="_blank" class="add-button">+</a>
+            <div class="detail-button">Lihat Detail</div>
+             <div class="wayang-info">
+                <h4>Anoman (Hanoman)</h4>
+                <p>Ksatria wanara (kera) putih dari wiracarita Ramayana. Ia adalah panglima dan abdi setia Prabu Rama yang memiliki kekuatan luar biasa.</p>
+            </div>
           </div>
+
           <div class="product-card">
             <img src="images/bima.jpg" alt="Wayang Golek Bima">
             <h3>Wayang Golek<br>Bima</h3>
-            <a href="https://id.shp.ee/63xnzgV" target="_blank" class="add-button">+</a>
-          </div>
-          <div class="product-card">
-            <img src="images/arjuna.jpg" alt="Wayang Golek Arjuna">
-            <h3>Wayang Golek<br>Arjuna</h3>
-            <a href="https://id.shp.ee/63xnzgV" target="_blank" class="add-button">+</a>
-          </div>
-          <div class="product-card">
-            <img src="images/nakula.jpg" alt="Wayang Golek Nakula">
-            <h3>Wayang Golek<br>Nakula</h3>
-            <a href="https://id.shp.ee/63xnzgV" target="_blank" class="add-button">+</a>
-          </div>
-          <div class="product-card">
-            <img src="images/petruk.jpg" alt="Wayang Golek Petruk">
-            <h3>Wayang Golek<br>Petruk</h3>
-            <a href="https://id.shp.ee/63xnzgV" target="_blank" class="add-button">+</a>
-          </div>
-          <div class="product-card">
-            <img src="images/gatot kaca.jpg" alt="Wayang Golek Gatot Kaca">
-            <h3>Wayang Golek<br>Gatot Kaca</h3>
-            <a href="https://id.shp.ee/63xnzgV" target="_blank" class="add-button">+</a>
+            <div class="detail-button">Lihat Detail</div>
+             <div class="wayang-info">
+                <h4>Bima (Werkudara)</h4>
+                <p>Pandawa kedua, dikenal karena kekuatan fisiknya yang luar biasa, wataknya yang tegas, jujur, dan tidak suka basa-basi. Senjatanya adalah Kuku Pancanaka.</p>
+            </div>
           </div>
         </div>
       </main>
+    </div>
+  </div> 
 
-      <!-- Sidebar -->
-      <aside class="product-sidebar">
-        <div class="profile">
-          <img src="images/icons.png" alt="Foto Profil">
-          <h4>Riky Kartawiyoga</h4>
-          <p><i class="fas fa-map-marker-alt"></i> Bandung, Indonesia</p>
-        </div>
-
-        <div class="recent-orders">
-          <h3>Pesanan Terkini <i class="fas fa-chevron-down"></i></h3>
-          <div class="order-item">
-            <img src="images/cepot.jpg" alt="Cepot">
-            <div><p>Wayang Golek Cepot</p></div>
-          </div>
-          <div class="order-item">
-            <img src="images/hanoman.jpg" alt="Hanoman">
-            <div><p>Wayang Golek Hanoman</p></div>
-          </div>
-          <div class="order-item">
-            <img src="images/petruk.jpg" alt="Petruk">
-            <div><p>Wayang Golek Petruk</p></div>
-          </div>
-        </div>
-      </aside>
-
-    </div> <!-- /product-body -->
-  </div> <!-- /page-container -->
-
-  <!-- Script pencarian produk -->
   <script>
-    const searchInput = document.getElementById('searchInput');
-    const productCards = document.querySelectorAll('.product-card');
+    // Menunggu semua elemen halaman dimuat sebelum menjalankan script
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // --- Script Pencarian Produk ---
+      const searchInput = document.getElementById('searchInput');
+      const productCards = document.querySelectorAll('.product-card');
 
-    searchInput.addEventListener('input', function () {
-      const keyword = this.value.toLowerCase();
-      productCards.forEach(card => {
-        const title = card.querySelector('h3').innerText.toLowerCase();
-        card.style.display = title.includes(keyword) ? 'block' : 'none';
+      searchInput.addEventListener('input', function () {
+        const keyword = this.value.toLowerCase();
+        productCards.forEach(card => {
+          const title = card.querySelector('h3').innerText.toLowerCase();
+          // Gunakan 'closest' untuk mendapatkan parent .product-card dan mengubah displaynya
+          const parentCard = card.closest('.product-card');
+          if (parentCard) {
+            parentCard.style.display = title.includes(keyword) ? 'block' : 'none';
+          }
+        });
+      });
+
+      // --- Script untuk Pop-up Klik ---
+      const allProductCards = document.querySelectorAll('.product-card');
+
+      allProductCards.forEach(card => {
+        card.addEventListener('click', function(event) {
+          event.stopPropagation();
+          
+          const currentInfo = this.querySelector('.wayang-info');
+          const isActive = currentInfo.classList.contains('is-active');
+
+          // Tutup semua pop-up yang mungkin sedang terbuka
+          document.querySelectorAll('.wayang-info').forEach(info => {
+            info.classList.remove('is-active');
+          });
+          
+          // Jika belum aktif, aktifkan.
+          if (!isActive) {
+            currentInfo.classList.add('is-active');
+          }
+        });
+      });
+
+      // Listener untuk menutup pop-up saat klik di luar
+      document.addEventListener('click', function() {
+        document.querySelectorAll('.wayang-info').forEach(info => {
+          info.classList.remove('is-active');
+        });
       });
     });
   </script>
 </body>
+</html>
