@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Girilaya Wayang Golek - Home</title>
+    <title>Profil Perusahaan - Girilaya</title>
     
-    <!-- Icon Library (Font Awesome) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
@@ -29,7 +28,7 @@
             color: inherit;
         }
         
-        /* --- Gaya Khusus Halaman Home --- */
+        /* --- Gaya Khusus Halaman Profil --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-image: url('images/bghome.png');
@@ -80,7 +79,7 @@
         }
 
         /* --- Kontainer Konten Utama --- */
-        .home-container {
+        .profile-container {
             width: 100%;
             max-width: 1100px;
             margin: 0 auto;
@@ -91,55 +90,35 @@
             min-height: calc(100vh - 75px); /* Mengisi sisa tinggi layar */
         }
 
-        /* Konten Teks di Sebelah Kiri */
-        .home-text-content {
+        /* Konten Teks */
+        .profile-text-content {
             flex: 1.2;
         }
-        .home-text-content h1 {
+        .profile-text-content h1 {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: bold;
             line-height: 1.2;
             text-transform: uppercase;
         }
-        .home-text-content h2 {
+        .profile-text-content h2 {
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: normal;
             margin-bottom: 20px;
         }
-        .home-text-content p {
+        .profile-text-content p {
             color: var(--text-secondary);
             text-align: justify;
             max-width: 500px;
         }
 
-        /* Tumpukan Gambar di Sebelah Kanan */
-        .home-image-stack {
-            flex: 1;
-            display: grid;
-            place-items: center;
-            position: relative;
-            min-height: 400px;
-        }
-        .home-image-stack .background-circle {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-        }
-        .home-image-stack .foreground-logo {
-            position: absolute;
-            width: 100%;
-            max-width: 240px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));
-        }
-
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
-            .home-container {
+            .profile-container {
                 flex-direction: column;
                 text-align: center;
                 padding-top: 40px;
             }
-            .home-text-content p {
+            .profile-text-content p {
                 text-align: center;
                 margin-left: auto;
                 margin-right: auto;
@@ -156,19 +135,17 @@
 </head>
 <body>
 
-    <!-- Navbar Utama yang Konsisten -->
     <nav class="main-nav">
         <a href="index.html" class="icon" title="Halaman Utama"><i class="fas fa-home"></i></a>
         <a href="home.html" class="active">Profil</a>
-        <a href="product.html">Galeri</a>
+        <a href="product.html">Produk</a>
         <a href="contact.html">Kontak</a>
     </nav>
 
-    <!-- Kontainer untuk konten utama -->
-    <main class="home-container">
-        <div class="home-text-content">
+    <main class="profile-container">
+        <div class="profile-text-content">
             <h1>Girilaya</h1>
-            <h2>wayang golek</h2>
+            <h2>Profil Perusahaan</h2>
             <p>
                 Girilaya Wayang Golek adalah galeri dan pusat kerajinan wayang golek di Bandung yang didirikan oleh Riki Kartawiyoga sejak 2008. Memproduksi berbagai jenis wayang golek—tradisional, modern, bahkan pesanan custom—untuk pasar lokal dan ekspor. Selain mempertahankan nilai budaya Sunda, galeri ini juga menerapkan inovasi desain agar produknya relevan dan menarik generasi masa kini.
             </p>
